@@ -1,5 +1,6 @@
 package com.chatbot.chatbot;
 
+import com.chatbot.chatbot.service.UtilisateurService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

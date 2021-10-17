@@ -83,7 +83,7 @@ public class Tokenizer {
 
                 // test the model file by subjecting it to prediction
                 DocumentCategorizer doccat = new DocumentCategorizerME(model);
-                String docWords = "watch a movie";
+                String docWords = "plan appointement for today";
                 double[] aProbs = doccat.categorize(getTokens( docWords));
 
                 // print the probabilities of the categories
