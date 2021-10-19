@@ -1,2 +1,2 @@
-Action do create new schedule
-Return get show what are
+Action je veux programmer. j'ai une reunion. j'ai un evenement. je doit faire
+Return je veux voir ,consulter ,mes evenements

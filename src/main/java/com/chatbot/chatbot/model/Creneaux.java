@@ -24,7 +24,6 @@ public class Creneaux implements Serializable {
     @Field("date_fin")
     private Instant dateFin;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public String getId() {
         return this.id;
@@ -65,33 +64,6 @@ public class Creneaux implements Serializable {
         this.dateFin = dateFin;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Creneaux)) {
-            return false;
-        }
-        return id != null && id.equals(((Creneaux) o).id);
-    }
-
-    @Override
-    public int hashCode() {
-        // see https://vladmihalcea.com/how-to-implement-equals-and-hashcode-using-the-jpa-entity-identifier/
-        return getClass().hashCode();
-    }
-
-    // prettier-ignore
-    @Override
-    public String toString() {
-        return "Creneaux{" +
-                "id=" + getId() +
-                ", dateDebut='" + getDateDebut() + "'" +
-                ", dateFin='" + getDateFin() + "'" +
-                "}";
-    }
 
 }

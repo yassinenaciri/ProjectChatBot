@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/home")
 public class HomeController {
     private final UtilisateurRepository utilisateurRepository;
 
@@ -18,7 +18,9 @@ public class HomeController {
 
     @PostMapping("/users")
     public void createUser() {
-        utilisateurRepository.save(new Utilisateur());
+        Utilisateur newUser=new Utilisateur();
+
+        utilisateurRepository.save(newUser);
 
     }
 }

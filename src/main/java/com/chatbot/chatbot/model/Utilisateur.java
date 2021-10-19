@@ -1,14 +1,20 @@
 package com.chatbot.chatbot.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.security.core.GrantedAuthority;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,18 +26,44 @@ public class Utilisateur implements Serializable {
     @Id
     private String id;
 
-    @NotNull(message = "must not be null")
-    @Field("date_debut")
-    private Instant dateDebut;
+    @Email
+    @Size(min = 5, max = 254)
+    @Indexed
+    private String email;
 
-    @Field("date_fin")
-    private Instant dateFin;
+    @JsonIgnore
+    @NotNull
+    @Size(min = 60, max = 60)
+    private String password;
+
+    @JsonIgnore
+    @NotNull
+    private Collection<GrantedAuthority> authorities= new ArrayList<>();
+
 
     @DBRef
     @Field("evenements")
     private Set<Evenement> evenements = new HashSet<>();
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getId() {
         return this.id;
@@ -46,32 +78,14 @@ public class Utilisateur implements Serializable {
         this.id = id;
     }
 
-    public Instant getDateDebut() {
-        return this.dateDebut;
+
+    public Collection<GrantedAuthority> getAuthorities() {
+        return authorities;
     }
 
-    public Utilisateur dateDebut(Instant dateDebut) {
-        this.setDateDebut(dateDebut);
-        return this;
+    public void setAuthorities(Collection<GrantedAuthority> authorities) {
+        this.authorities = authorities;
     }
-
-    public void setDateDebut(Instant dateDebut) {
-        this.dateDebut = dateDebut;
-    }
-
-    public Instant getDateFin() {
-        return this.dateFin;
-    }
-
-    public Utilisateur dateFin(Instant dateFin) {
-        this.setDateFin(dateFin);
-        return this;
-    }
-
-    public void setDateFin(Instant dateFin) {
-        this.dateFin = dateFin;
-    }
-
     public Set<Evenement> getEvenements() {
         return this.evenements;
     }
@@ -91,44 +105,18 @@ public class Utilisateur implements Serializable {
         return this;
     }
 
-    public Utilisateur addEvenements(Evenement evenement) {
+    public Utilisateur addEvenement(Evenement evenement) {
         this.evenements.add(evenement);
         evenement.setEmployee(this);
         return this;
     }
 
-    public Utilisateur removeEvenements(Evenement evenement) {
+    public Utilisateur removeEvenement(Evenement evenement) {
         this.evenements.remove(evenement);
         evenement.setEmployee(null);
         return this;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Utilisateur)) {
-            return false;
-        }
-        return id != null && id.equals(((Utilisateur) o).id);
-    }
 
-    @Override
-    public int hashCode() {
-        // see https://vladmihalcea.com/how-to-implement-equals-and-hashcode-using-the-jpa-entity-identifier/
-        return getClass().hashCode();
-    }
-
-    // prettier-ignore
-    @Override
-    public String toString() {
-        return "Utilisateur{" +
-                "id=" + getId() +
-                ", dateDebut='" + getDateDebut() + "'" +
-                ", dateFin='" + getDateFin() + "'" +
-                "}";
-    }
 }

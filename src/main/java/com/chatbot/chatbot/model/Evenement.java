@@ -16,7 +16,7 @@ public class Evenement implements Serializable {
     @Id
     private String id;
 
-    @NotNull(message = "must not be null")
+    @NotNull
     @Field("titre")
     private String titre;
 
@@ -34,7 +34,6 @@ public class Evenement implements Serializable {
     @Field("employee")
     private Utilisateur employee;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public String getId() {
         return this.id;
@@ -114,34 +113,7 @@ public class Evenement implements Serializable {
         return this;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Evenement)) {
-            return false;
-        }
-        return id != null && id.equals(((Evenement) o).id);
-    }
 
-    @Override
-    public int hashCode() {
-        // see https://vladmihalcea.com/how-to-implement-equals-and-hashcode-using-the-jpa-entity-identifier/
-        return getClass().hashCode();
-    }
-
-    // prettier-ignore
-    @Override
-    public String toString() {
-        return "Evenement{" +
-                "id=" + getId() +
-                ", titre='" + getTitre() + "'" +
-                ", description='" + getDescription() + "'" +
-                ", localisation='" + getLocalisation() + "'" +
-                "}";
-    }
 }
 
