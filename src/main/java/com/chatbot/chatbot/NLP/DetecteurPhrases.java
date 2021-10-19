@@ -1,4 +1,4 @@
-package com.chatbot.chatbot;
+package com.chatbot.chatbot.NLP;
 
 import opennlp.tools.sentdetect.SentenceDetectorME;
 import opennlp.tools.sentdetect.SentenceModel;

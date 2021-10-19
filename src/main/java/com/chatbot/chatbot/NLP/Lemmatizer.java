@@ -1,8 +1,8 @@
-package com.chatbot.chatbot;
+package com.chatbot.chatbot.NLP;
 
 import java.io.*;
 import java.util.Collection;
-import static net.sf.hfst.HfstOptimizedLookup.runTransducer;
+
 import net.sf.hfst.NoTokenizationException;
 import net.sf.hfst.Transducer;
 import net.sf.hfst.TransducerAlphabet;

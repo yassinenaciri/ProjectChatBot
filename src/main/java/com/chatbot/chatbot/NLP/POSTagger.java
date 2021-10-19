@@ -1,4 +1,4 @@
-package com.chatbot.chatbot;
+package com.chatbot.chatbot.NLP;
 
 import net.sf.hfst.NoTokenizationException;
 import opennlp.tools.postag.POSModel;

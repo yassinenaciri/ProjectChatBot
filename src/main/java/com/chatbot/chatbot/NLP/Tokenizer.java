@@ -1,4 +1,4 @@
-package com.chatbot.chatbot;
+package com.chatbot.chatbot.NLP;
 import java.io.*;
 
 import opennlp.tools.tokenize.TokenizerME;
